@@ -1,36 +1,10 @@
-**Plan:**
-*   **Page 1: The Hook.** A dark, romantic background with a "Click to Enter" button (crucial for audio autoplay).
-*   **Page 2: The 3D Cake.** Use Three.js to render a simple but beautiful 3D cake with a flickering candle.
-*   **Page 3: The Memories (Photos).** A stylish carousel or grid of photos with a romantic overlay.
-*   **Page 4: The Grand Finale.** A heartfelt letter, fireworks/confetti explosion, and a final "I Love You".
-
-**Technical Challenges & Solutions:**
-*   *Audio Autoplay:* Browsers block audio until the user interacts. I will add a "Open Gift" button on Page 1 to trigger the music.
-*   *3D Cake:* Writing a full 3D engine from scratch is too long. I will use a simplified Three.js implementation or a very high-quality CSS 3D representation. *Decision:* CSS 3D is safer for a single file, but Three.js is requested for "insane" quality. I'll use a CDN link for Three.js.
-*   *Navigation:* I'll use a simple JS class to toggle visibility of sections (`display: none` vs `display: block`) to simulate pages.
-
-**Refining the "Aesthetics":**
-*   Font: Google Fonts (Playfair Display for elegance, Poppins for modern).
-*   Colors: Deep reds, golds, soft pinks, and dark backgrounds.
-*   Effects: Glassmorphism, glowing text, smooth transitions.
-
-Let's build the code structure.
-This is a complete, professional-grade Single Page Application (SPA) code. It uses **Three.js** for the 3D cake, **Canvas Confetti** for the fireworks, and advanced CSS for the "insane" aesthetics.
-
-### Instructions:
-1.  Create a folder on your computer.
-2.  Create a file named `index.html`.
-3.  Paste the code below into that file.
-4.  **Important:** You need to replace the placeholder images (`photo1.jpg`, etc.) with your actual photos in the same folder.
-5.  **Important:** You need an MP3 file named `music.mp3` in the same folder (or change the link in the code).
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday My Love</title>
+    <title>Happy Birthday My Love 🥳❤️</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -59,7 +33,6 @@ This is a complete, professional-grade Single Page Application (SPA) code. It us
             width: 100vw;
         }
 
-        /* --- UTILS --- */
         .hidden { display: none !important; }
         .fade-in { animation: fadeIn 1.5s ease-in-out; }
         
@@ -135,7 +108,7 @@ This is a complete, professional-grade Single Page Application (SPA) code. It us
             transform: translate(-50%, -50%);
             z-index: 2;
             text-align: center;
-            pointer-events: none; /* Let clicks pass through to buttons */
+            pointer-events: none;
         }
 
         .cake-overlay h2 {
@@ -197,7 +170,7 @@ This is a complete, professional-grade Single Page Application (SPA) code. It us
             font-size: 1.2rem;
         }
 
-        /* --- PAGE 4: LETTER & FINALE --- */
+        /* --- PAGE 4: LETTER --- */
         #page-letter {
             height: 100vh;
             width: 100vw;
@@ -274,7 +247,7 @@ This is a complete, professional-grade Single Page Application (SPA) code. It us
             color: black;
         }
 
-        /* Floating particles */
+        /* --- PARTICLES --- */
         .particle {
             position: absolute;
             background: white;
@@ -288,13 +261,11 @@ This is a complete, professional-grade Single Page Application (SPA) code. It us
             50% { opacity: 0.8; }
             100% { transform: translateY(-10vh) translateX(50px); opacity: 0; }
         }
-
     </style>
 </head>
 <body>
 
-    <!-- AUDIO (Hidden) -->
-    <!-- REPLACE 'music.mp3' WITH YOUR ACTUAL FILE -->
+    <!-- AUDIO -->
     <audio id="bg-music" loop>
         <source src="music.mp3" type="audio/mpeg">
     </audio>
@@ -302,8 +273,8 @@ This is a complete, professional-grade Single Page Application (SPA) code. It us
     <!-- PAGE 1: INTRO -->
     <section id="page-intro" class="fade-in">
         <div class="hero-text">
-            <h1>For My Queen 😉❤️</h1>
-            <p>There is a surprise waiting for you...😘</p>
+            <h1>For My Queen😉❤️</h1>
+            <p>There is a surprise waiting for you...😌</p>
             <button class="btn-glow" onclick="startJourney()">Open Gift</button>
         </div>
     </section>
@@ -312,7 +283,7 @@ This is a complete, professional-grade Single Page Application (SPA) code. It us
     <section id="page-cake" class="hidden">
         <div id="canvas-container"></div>
         <div class="cake-overlay">
-            <h2>HAPPY BIRTHDAY TO YOU MY BEAUTIFUL GIRL 🥳🫂❤️!</h2>
+            <h2>HAPPY BIRTHDAY TO YOU MY GIRL🥳🫂❤️!</h2>
             <p>Blow out the candle...</p>
         </div>
     </section>
@@ -320,32 +291,61 @@ This is a complete, professional-grade Single Page Application (SPA) code. It us
     <!-- PAGE 3: GALLERY -->
     <section id="page-gallery" class="hidden">
         <div class="gallery-container">
-            <!-- photo1.jpg, photo2.jpg, photo3.jpg, photo4.jpg, photo5.jpg, photo6.jpg, photo7.jpg, photo8.jpg, photo9.jpg, photo10.jpg -->
             <div class="photo-card active">
-                <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500&auto=format&fit=crop&q=60" alt="Us">
+                <img src="photo1.jpg/photo-1529626455594-4ff0802cfb7e?w=500&auto=format&fit=crop&q=60" alt="Us">
                 <div class="caption">Our First Date</div>
             </div>
             <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=60" alt="Us">
+                <img src="photo2.jpg/photo/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=60" alt="Us">
                 <div class="caption">Your Smile</div>
             </div>
             <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=500&auto=format&fit=crop&q=60" alt="Us">
+                <img src="photo3.jpg/photo/photo-1511895426328-dc8714191300?w=500&auto=format&fit=crop&q=60" alt="Us">
                 <div class="caption">Adventure</div>
             </div>
         </div>
-    </section>
+class="photo-card">
+                <img src="photo4.jpg/photo/photo-1511895426328-dc8714191300?w=500&auto=format&fit=crop&q=60" alt="Us">
+                <div class="caption">Adventure</div>
+            </div>
+        </div>class="photo-card">
+                <img src="photo5.jpg/photo/photo-1511895426328-dc8714191300?w=500&auto=format&fit=crop&q=60" alt="Us">
+                <div class="caption">Adventure</div>
+            </div>
+        </div>class="photo-card">
+                <img src="photo6.jpg/photo/photo-1511895426328-dc8714191300?w=500&auto=format&fit=crop&q=60" alt="Us">
+                <div class="caption">Adventure</div>
+            </div>
+        </div>class="photo-card">
+                <img src="photo7.jpg/photo/photo-1511895426328-dc8714191300?w=500&auto=format&fit=crop&q=60" alt="Us">
+                <div class="caption">Adventure</div>
+            </div>
+        </div>class="photo-card">
+                <img src="photo8.jpg/photo/photo-1511895426328-dc8714191300?w=500&auto=format&fit=crop&q=60" alt="Us">
+                <div class="caption">Adventure</div>
+            </div>
+        </div>class="photo-card">
+                <img src="photo9.jpg/photo/photo-1511895426328-dc8714191300?w=500&auto=format&fit=crop&q=60" alt="Us">
+                <div class="caption">Adventure</div>
+            </div>
+        </div>class="photo-card">
+                <img src="photo10.jpg/photo/photo-1511895426328-dc8714191300?w=500&auto=format&fit=crop&q=60" alt="Us">
+                <div class="caption">Adventure</div>
+            </div>
+        </div>
+
+  </section>
 
     <!-- PAGE 4: LETTER -->
     <section id="page-letter" class="hidden">
         <div class="glass-card">
-            <h2>Happy Birthday MAYA 🥳🕉️!</h2>
+            <h2>Happy Birthday TO YOU MERI WIFE🫂💌!</h2>
             <p>
-                To the most beautiful soul I know😌. Every moment with you is a treasure🤗. 
-                You light up my world like the stars😇. I hope this year brings you as much joy as you bring into my life and i hope your all dreams come true meri kanxi🥳🫂.
+                To the most beautiful soul I know😌. Every moment with you is a treasure😇. 
+                You light up my world like the stars🤗. I hope this year brings you as much joy as you bring into my life and i hope yuor all dreams come true🥳❤️🫂.
             </p>
             <p>
-                I love you more than code can express my girl🫂❤️ .
+                I love you more than Anything can express😌🫂💌.
             </p>
             <div class="heart-beat">❤️</div>
             <br>
@@ -365,10 +365,11 @@ This is a complete, professional-grade Single Page Application (SPA) code. It us
         const pages = ['page-intro', 'page-cake', 'page-gallery', 'page-letter'];
         const music = document.getElementById('bg-music');
         const navControls = document.getElementById('nav-controls');
+        let scene, camera, renderer, cakeGroup, animationId;
 
         // --- NAVIGATION LOGIC ---
         function startJourney() {
-            // Start Music (Must be triggered by user click)
+            // Start Music
             music.volume = 0.5;
             music.play().catch(e => console.log("Audio play failed", e));
             
@@ -382,21 +383,78 @@ This is a complete, professional-grade Single Page Application (SPA) code. It us
             
             // Start 3D Scene
             initThreeJS();
+            
+            // Start particles
+            createParticles();
         }
 
         function nextPage() {
             if (currentPage < pages.length - 1) {
-                // Remove current
                 document.getElementById(pages[currentPage]).classList.add('hidden');
-                
-                // Increment
                 currentPage++;
                 
-                // Add next
                 const nextEl = document.getElementById(pages[currentPage]);
                 nextEl.classList.remove('hidden');
                 nextEl.classList.add('fade-in');
 
                 // Special triggers
-                if (currentPage === 
+                if (currentPage === 3) {
+                    fireConfetti();
+                }
+            }
+        }
 
+        function prevPage() {
+            if (currentPage > 0) {
+                document.getElementById(pages[currentPage]).classList.add('hidden');
+                currentPage--;
+                
+                const prevEl = document.getElementById(pages[currentPage]);
+                prevEl.classList.remove('hidden');
+                prevEl.classList.add('fade-in');
+            }
+        }
+
+        // --- THREE.JS 3D CAKE ---
+        function initThreeJS() {
+            const container = document.getElementById('canvas-container');
+            
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            container.appendChild(renderer.domElement);
+            
+            // Create cake
+            cakeGroup = new THREE.Group();
+            
+            // Cake base
+            const baseGeo = new THREE.CylinderGeometry(2, 2, 1, 32);
+            const baseMat = new THREE.MeshPhongMaterial({ color: 0xff4d6d });
+            const base = new THREE.Mesh(baseGeo, baseMat);
+            base.position.y = 0.5;
+            cakeGroup.add(base);
+            
+            // Cake top
+            const topGeo = new THREE.CylinderGeometry(1.5, 1.5, 1, 32);
+            const topMat = new THREE.MeshPhongMaterial({ color: 0xff8fa3 });
+            const top = new THREE.Mesh(topGeo, topMat);
+            top.position.y = 1.5;
+            cakeGroup.add(top);
+            
+            // Candle
+            const candleGeo = new THREE.CylinderGeometry(0.1, 0.1, 0.8, 16);
+            const candleMat = new THREE.MeshPhongMaterial({ color: 0xffffff });
+            const candle = new THREE.Mesh(candleGeo, candleMat);
+            candle.position.y = 2.4;
+            cakeGroup.add(candle);
+            
+            // Flame
+            const flameGeo = new THREE.SphereGeometry(0.15, 16, 16);
+            const flameMat = new THREE.MeshBasicMaterial({ color: 0xffd700 });
+            const flame = new THREE.Mesh(flameGeo, flameMat);
+            flame.position.y = 2.9;
+            cakeGroup.add(flame);
+            
+            scene.add(c
