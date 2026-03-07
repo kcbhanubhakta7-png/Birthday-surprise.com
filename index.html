@@ -1,449 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday My Love🫂🕉️</title>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<meta charset="UTF-8">
+<title>Happy Birthday My Love ❤️</title>
 
-    <style>
-        :root {
-            --primary: #ff4d6d;
-            --secondary: #ff8fa3;
-            --bg: #0f0c29;
-            --glass: rgba(255, 255, 255, 0.1);
-            --gold: #ffd700;
-        }
+<style>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            overflow: hidden;
-            height: 100vh;
-            width: 100vw;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Poppins', sans-serif;
+}
 
-        .hidden { display: none !important; }
-        .fade-in { animation: fadeIn 1.5s ease-in-out; }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+body{
+background:#000;
+color:white;
+overflow:hidden;
+text-align:center;
+}
 
-        /* --- PAGE 1: INTRO --- */
-        #page-intro {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            z-index: 10;
-            position: relative;
-        }
+/* pages */
 
-        .hero-text h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            background: linear-gradient(to right, #ff9a9e, #fecfef);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(255, 77, 109, 0.5);
-        }
+.page{
+position:absolute;
+width:100%;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+transition:1s;
+background:linear-gradient(120deg,#000,#1a001a,#000);
+}
 
-        .birthday-date {
-            font-size: 2rem;
-            color: var(--gold);
-            margin: 20px 0;
-            font-weight: bold;
-        }
+.hidden{
+transform:translateX(-100%);
+opacity:0;
+pointer-events:none;
+}
 
-        .btn-glow {
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            background: transparent;
-            color: white;
-            border: 2px solid var(--secondary);
-            border-radius: 50px;
-            cursor: pointer;
-            transition: 0.4s;
-            box-shadow: 0 0 15px var(--secondary);
-            margin-top: 30px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+button{
+padding:15px 40px;
+font-size:20px;
+border:none;
+border-radius:30px;
+background:#ff0066;
+color:white;
+cursor:pointer;
+box-shadow:0 0 20px #ff0066;
+margin-top:40px;
+}
 
-        .btn-glow:hover {
-            background: var(--secondary);
-            box-shadow: 0 0 30px var(--secondary);
-            transform: scale(1.05);
-        }
+h1{
+font-size:55px;
+text-shadow:0 0 25px pink;
+}
 
-        /* --- PAGE 2: 3D CAKE --- */
-        #page-cake {
-            height: 100vh;
-            width: 100vw;
-            position: relative;
-            background: radial-gradient(circle at center, #2b1022, #000);
-        }
+p{
+font-size:25px;
+margin-top:20px;
+max-width:800px;
+}
 
-        #canvas-container {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
+/* heart animation */
 
-        .cake-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            text-align: center;
-            pointer-events: none;
-        }
+.heart{
+position:absolute;
+color:#ff4d6d;
+font-size:20px;
+animation:float 8s linear infinite;
+}
 
-        .cake-overlay h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--gold);
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-            margin-bottom: 10px;
-        }
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
 
-        /* --- PAGE 3: GALLERY --- */
-        #page-gallery {
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #000;
-            position: relative;
-            z-index: 5;
-        }
+/* cake */
 
-        .gallery-container {
-            display: flex;
-            gap: 20px;
-            perspective: 1000px;
-        }
+.cake{
+position:relative;
+width:200px;
+height:150px;
+background:#ff99aa;
+border-radius:20px;
+box-shadow:0 10px 40px pink;
+margin-top:30px;
+}
 
-        .photo-card {
-            width: 300px;
-            height: 400px;
-            background: white;
-            padding: 10px 10px 40px 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transform: rotateY(15deg);
-            transition: 0.5s;
-            position: relative;
-            opacity: 0.8;
-        }
+.candle{
+position:absolute;
+width:15px;
+height:50px;
+background:white;
+top:-50px;
+left:92px;
+}
 
-        .photo-card.active {
-            transform: rotateY(0deg) scale(1.1);
-            opacity: 1;
-            z-index: 10;
-            box-shadow: 0 0 50px var(--primary);
-        }
+.flame{
+width:15px;
+height:25px;
+background:orange;
+border-radius:50%;
+animation:flicker .2s infinite;
+}
 
-        .photo-card img {
-            width: 100%;
-            height: 85%;
-            object-fit: cover;
-            border: 1px solid #eee;
-        }
+@keyframes flicker{
+0%{transform:scale(1)}
+50%{transform:scale(1.2)}
+100%{transform:scale(1)}
+}
 
-        .photo-card .caption {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            color: #333;
-            font-size: 1.2rem;
-        }
+/* gallery */
 
-        /* --- PAGE 4: LETTER --- */
-        #page-letter {
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: url('https://images.unsplash.com/photo-1516961642265-531546e84af2?q=80&w=1974&auto=format&fit=crop') no-repeat center center/cover;
-            position: relative;
-        }
+.gallery{
+display:flex;
+gap:30px;
+margin-top:30px;
+}
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 600px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            z-index: 10;
-        }
+.gallery img{
+width:200px;
+border-radius:20px;
+box-shadow:0 0 20px pink;
+transition:.5s;
+}
 
-        .glass-card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
+.gallery img:hover{
+transform:scale(1.2);
+}
 
-        .glass-card p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            color: #f0f0f0;
-        }
+/* fireworks */
 
-        .heart-beat {
-            font-size: 3rem;
-            color: var(--primary);
-            animation: beat 1s infinite;
-        }
+.firework{
+position:absolute;
+width:5px;
+height:5px;
+background:white;
+animation:explode 1s infinite;
+}
 
-        @keyframes beat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
+@keyframes explode{
+0%{transform:scale(1)}
+100%{transform:scale(20);opacity:0}
+}
 
-        /* --- NAVIGATION --- */
-        .nav-controls {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-btn {
-            background: var(--glass);
-            border: 1px solid white;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .nav-btn:hover {
-            background: white;
-            color: black;
-        }
-
-        /* --- PARTICLES --- */
-        .particle {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: float 10s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-10vh) translateX(50px); opacity: 0; }
-        }
-    </style>
+</style>
 </head>
+
 <body>
 
-    <!-- AUDIO -->
-    <audio id="bg-music" loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
+<audio autoplay loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
 
-    <!-- PAGE 1: INTRO -->
-    <section id="page-intro" class="fade-in">
-        <div class="hero-text">
-            <h1>Happy Birthday  TO YOU MY GIRL 🥳🫂❤️😌😉</h1>
-            <div class="birthday-date">🎂 FALGUN 24, 2082 🎂</div>
-            <p>There is a surprise waiting for you...❤️😉</p>
-            <button class="btn-glow" onclick="startJourney()">Open Gift</button>
-        </div>
-    </section>
+<!-- PAGE 1 -->
 
-    <!-- PAGE 2: 3D CAKE -->
-    <section id="page-cake" class="hidden">
-        <div id="canvas-container"></div>
-        <div class="cake-overlay">
-            <h2>HAPPY BIRTHDAY TO YOU MY MERI KANXU🥳❤️!</h2>
-            <p>Blow out the candle...</p>
-        </div>
-    </section>
+<div class="page" id="page1">
 
-    <!-- PAGE 3: GALLERY -->
-    <section id="page-gallery" class="hidden">
-        <div class="gallery-container">
-            <div class="photo-card active">
-                <img src="https://photo1.jpg/photo-1529626455594-4ff0802cfb7e?w=500&auto=format&fit=crop&q=60" alt="Us">
-                <div class="caption">Our First Date</div>
-            </div>
-            <div class="photo-card">
-                <img src="https://photo2.jpg/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=60" alt="Us">
-                <div class="caption">Your Smile</div>
-            </div>
-            <div class="photo-card">
-                <img src="https://photo3.jpg/photo-1511895426328-dc8714191300?w=500&auto=format&fit=crop&q=60" alt="Us">
-                <div class="caption">Adventure</div>
-            </div>
-        </div> <img src="https://photo4.jpg/photo-1529626455594-4ff0802cfb7e?w=500&auto=format&fit=crop&q=60" alt="Us">
-                <div class="caption">Our First Date</div>
-            </div>
-            <div class="photo-card">
-                <img src="https://photo5.jpgphoto-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=60" alt="Us">
-                <div class="caption">Your Smile</div>
-            </div>
-            <div class="photo-card">
-                <img src="https://photo6.jpg/photo-1511895426328-dc8714191300?w=500&auto=format&fit=crop&q=60" alt="Us">
-                <div class="caption">Adventure</div>
-            </div>
-        </div> <img src="https://photo7.jpgphoto-1529626455594-4ff0802cfb7e?w=500&auto=format&fit=crop&q=60" alt="Us">
-                <div class="caption">Our First Date</div>
-            </div>
-            <div class="photo-card">
-                <img src="https://photo8.jpg/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=60" alt="Us">
-                <div class="caption">Your Smile</div>
-            </div>
-            <div class="photo-card">
-                <img src="https://photo9.jpg/photo-1511895426328-dc8714191300?w=500&auto=format&fit=crop&q=60" alt="Us">
-                <div class="caption">Adventure</div>
-            </div>
-        </div>
-    </section>
+<h1>Happy Birthday My girl 🫂🥳❤️</h1>
 
-    <!-- PAGE 4: LETTER -->
-    <section id="page-letter" class="hidden">
-        <div class="glass-card">
-            <h2>Happy Birthday TO YOU MY WIFE 🥳🕉️❤️!</h2>
-            <p>
-                To the most beautiful soul I know😌. Every moment with you is a treasure🤗. 
-                You light up my world like the stars😇. I hope this year brings you as much joy as you bring into my life and i hope your all dreams come true🥳🕉️.
-            </p>
-            <p>
-                I love you more than Anything can express😌🕉️❤️.
-            </p>
-            <div class="heart-beat">❤️</div>
-            <br>
-            <p style="font-size: 0.9rem; opacity: 0.7;">Forever yours.</p>
-        </div>
-    </section>
+<p>
+Today the world became beautiful because you were born😁.
+</p>
 
-    <!-- NAVIGATION -->
-    <div class="nav-controls hidden" id="nav-controls">
-        <button class="nav-btn" onclick="prevPage()">Previous</button>
-        <button class="nav-btn" onclick="nextPage()">Next</button>
-    </div>
+<button onclick="nextPage(1)">Open Your Surprise 🎁</button>
 
-    <script>
-        // --- STATE MANAGEMENT ---
-        let currentPage = 0;
-        const pages = ['page-intro', 'page-cake', 'page-gallery', 'page-letter'];
-        const music = document.getElementById('bg-music');
-        const navControls = document.getElementById('nav-controls');
-        let scene, camera, renderer, cakeGroup, animationId;
+</div>
 
-        // --- NAVIGATION LOGIC ---
-        function startJourney() {
-            // Start Music
-            music.volume = 0.5;
-            music.play().catch(e => console.log("Audio play failed", e));
-            
-            // Hide Intro, Show Cake
-            document.getElementById('page-intro').classList.add('hidden');
-            document.getElementById('page-cake').classList.remove('hidden');
-            document.getElementById('page-cake').classList.add('fade-in');
-            
-            // Show Nav
-            navControls.classList.remove('hidden');
-            
-            // Start 3D Scene
-            initThreeJS();
-            
-            // Start particles
-            createParticles();
-        }
+<!-- PAGE 2 -->
 
-        function nextPage() {
-            if (currentPage < pages.length - 1) {
-                document.getElementById(pages[currentPage]).classList.add('hidden');
-                currentPage++;
-                
-                const nextEl = document.getElementById(pages[currentPage]);
-                nextEl.classList.remove('hidden');
-                nextEl.classList.add('fade-in');
+<div class="page hidden" id="page2">
 
-                // Special triggers
-                if (currentPage === 3) {
-                    fireConfetti();
-                }
-            }
-        }
+<h1>For The Most Beautiful Girl😉💖</h1>
 
-        function prevPage() {
-            if (currentPage > 0) {
-                document.getElementById(pages[currentPage]).classList.add('hidden');
-                currentPage--;
-                
-                const prevEl = document.getElementById(pages[currentPage]);
-                prevEl.classList.remove('hidden');
-                prevEl.classList.add('fade-in');
-            }
-        }
+<p>
+You are my happiness, my peace, my dream and my forever.
+Every second with you is magic🥹🫂🕉️.
+</p>
 
-        // --- THREE.JS 3D CAKE ---
-        function initThreeJS() {
-            const container = document.getElementById('canvas-container');
-            
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
-            
-            // Create cake
-            cakeGroup = new THREE.Group();
-            
-            // Cake base
-            const baseGeo = new THREE.CylinderGeometry(2, 2, 1, 32);
-            const baseMat = new THREE.MeshPhongMaterial({ color: 0xff4d6d });
-            const base = new THREE.Mesh(baseGeo, baseMat);
-            base.position.y = 0.5;
-            cakeGroup.add(base);
-            
-            // Cake top
-            const topGeo = new THREE.CylinderGeometry(1.5, 1.5, 1, 32);
-            const topMat = new THREE.MeshPhongMaterial({ color: 0xff8fa3 });
-            const top = new THREE.Mesh(topGeo, topMat);
-            top.position.y = 1.5;
-            cakeGroup.add(top);
-            
-            // Candle
-            const candleGeo = new THREE.CylinderGeometry(0.1, 0.1, 0.8, 16);
-            const candleMat = new THREE.MeshPhongMaterial({ color: 0xffffff });
-            const candle = new THREE.Mesh(candleGeo, candleMat);
-            candle.position.y = 2.4;
+<div class="cake">
+
+<div class="candle">
+<div class="flame"></div>
+</div>
+
+</div>
+
+<button onclick="nextPage(2)">Next Surprise ✨</button>
+
+</div>
+
+<!-- PAGE 3 -->
+
+<div class="page hidden" id="page3">
+
+<h1>Our Beautiful Memories 📸</h1>
+
+<div class="gallery">
+
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+<img src="photo5.jpg">
+<img src="photo6.jpg">
+<img src="photo7.jpg">
+<img src="photo8.jpg">
+<img src="photo9.jpg">
+<img src="photo10.jpg">
+</div>
+
+<button onclick="nextPage(3)">Final Surprise 💌</button>
+
+</div>
+
+<!-- PAGE 4 -->
+
+<div class="page hidden" id="page4">
+
+<h1>I Love You Forever 🤗❤️</h1>
+
+<p>
+Happy Birthday My WIFE 🫂🕉️❤️😇😌❤️  
+May your life be full of happiness, love and success And I Hope Your All Dreams Come True 🫂🥳😇.  
+Thank you for being the most amazing part of my life😌❤️.
+</p>
+
+<p style="margin-top:40px;font-size:30px;color:pink">
+— From Your Love —
+</p>
+
+</div>
+
+<script>
+
+/* next page function */
+
+function nextPage(n){
+
+document.getElementById("page"+n).classList.add("hidden")
+document.getElementById("page"+(n+1)).classList.remove("hidden")
+
+}
+
+/* floating hearts */
+
+setInterval(()=>{
+
+let heart=document.createElement("div")
+heart.className="heart"
+heart.innerHTML="❤"
+
+heart.style.left=Math.random()*100+"vw"
+heart.style.fontSize=Math.random()*30+"px"
+
+document.body.appendChild(heart)
+
+setTimeout(()=>heart.remove(),8000)
+
+},300)
+
+/* fireworks */
+
+setInterval(()=>{
+
+let fire=document.createElement("div")
+fire.className="firework"
+
+fire.style.left=Math.random()*100+"vw"
+fire.style.top=Math.random()*100+"vh"
+
+document.body.appendChild(fire)
+
+setTimeout(()=>fire.remove(),1000)
+
+},600)
+
+</script>
+
+</body>
+</html>
