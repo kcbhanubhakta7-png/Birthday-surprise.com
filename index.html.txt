@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Happy Birthday My Love</title>
+
+<meta charset="UTF-8">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+text-align:center;
+background:linear-gradient(270deg,#ff4e9b,#6a5acd,#ff6ec7);
+background-size:600% 600%;
+animation:bgmove 12s infinite;
+color:white;
+overflow-x:hidden;
+}
+
+@keyframes bgmove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.container{
+margin-top:120px;
+}
+
+h1{
+font-size:70px;
+text-shadow:0 0 10px white,0 0 20px pink,0 0 30px red;
+}
+
+p{
+font-size:30px;
+max-width:800px;
+margin:auto;
+line-height:1.6;
+}
+
+button{
+margin-top:40px;
+font-size:28px;
+padding:18px 40px;
+border:none;
+border-radius:40px;
+background:#ff0066;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+#surprise{
+display:none;
+margin-top:60px;
+}
+
+.gallery{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.gallery img{
+width:230px;
+height:230px;
+object-fit:cover;
+border-radius:20px;
+margin:10px;
+box-shadow:0 0 20px pink;
+transition:0.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.1);
+}
+
+.heart{
+position:fixed;
+color:pink;
+font-size:30px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+.fire{
+position:fixed;
+font-size:50px;
+}
+
+.cake{
+font-size:120px;
+margin-top:30px;
+animation:cakeGlow 2s infinite alternate;
+}
+
+@keyframes cakeGlow{
+from{transform:scale(1);}
+to{transform:scale(1.1);}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎂 Happy Birthday My GIRL🫂🥳🎂</h1>
+
+<p>
+I made a small surprise for the most special girl in my life😉❤️
+</p>
+
+<button onclick="startSurprise()">Start Your Surprise 💝</button>
+
+<div id="surprise">
+
+<h1>🎉 HAPPY BIRTHDAY 🎉</h1>
+
+<div class="cake">🎂🕯️</div>
+
+<p>
+
+Happy Birthday to the most beautiful girl in the world🥳🫂❤️.  
+You are my happiness😌, my smile🤗, and my favorite person😘.  
+
+I wish your life is filled with love, success, and joy and your all dreams come true 😇🕉️.  
+Thank you for being part of my life 🫂❤️
+
+</p>
+
+<h1>💖 I Love You Forever MERI KANXI🫂💖</h1>
+
+<div class="gallery">
+
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+<img src="photo5.jpg">
+<img src="photo6.jpg">
+<img src="photo7.jpg">
+<img src="photo8.jpg">
+<img src="photo9.jpg">
+<img src="photo10.jpg">
+
+</div>
+
+</div>
+
+</div>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function startSurprise(){
+
+document.getElementById("surprise").style.display="block";
+
+document.getElementById("music").play();
+
+createHearts();
+
+fireworks();
+
+}
+
+function createHearts(){
+
+setInterval(function(){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="💖";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(20+Math.random()*40)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),6000);
+
+},300);
+
+}
+
+function fireworks(){
+
+setInterval(function(){
+
+let fire=document.createElement("div");
+
+fire.className="fire";
+
+fire.innerHTML="🎆";
+
+fire.style.left=Math.random()*100+"vw";
+
+fire.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(fire);
+
+setTimeout(()=>fire.remove(),1000);
+
+},500);
+
+}
+
+</script>
+
+</body>
+</html>
